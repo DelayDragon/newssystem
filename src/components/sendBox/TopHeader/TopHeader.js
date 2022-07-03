@@ -33,7 +33,7 @@ export default function TopHeader() {
           danger: true,
           label: '退出',
           onClick:()=>{
-            // localStorage.removeItem('token')
+            localStorage.removeItem('token')
             navigate('/Login')
           }
         },

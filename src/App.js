@@ -7,13 +7,9 @@ import NewsSendBox from './views/sendBox/NewsSendBox';
 
 function App() {
   const element = useRoutes(routes)
-  // const element = useRoutes(routes)
-  console.log(<Home/>)
   return (
     <div>
-      {/* <NewsSendBox children={<Home/>}></NewsSendBox> */}
       {element} 
-      {/* <Home/> */}
     </div>
   );
 }

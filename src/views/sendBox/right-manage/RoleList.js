@@ -128,7 +128,6 @@ export default function RoleList() {
     setcurrentRights(checkedKeys)
   };
   return (
-    <NewsSendBox children={
     <div>
       <Table dataSource={dataSource} columns={columns} rowKey={(item)=>item.id}></Table>
       {/* 弹出框 */}
@@ -145,7 +144,5 @@ export default function RoleList() {
         />
       </Modal>
     </div>
-    }>
-    </NewsSendBox>
   )
 }

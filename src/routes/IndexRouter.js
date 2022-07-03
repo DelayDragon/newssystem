@@ -16,7 +16,7 @@ const newsRoute = [
   },
     // 发布页面
   {
-    path:'/newssendbox/*',
+    path:'/newssendbox',
     element:<NewsSendBox/>,
     children:[
       // 首页

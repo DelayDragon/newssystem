@@ -7,7 +7,7 @@ import {
 } from '@ant-design/icons'
 import UserForm from '../../../components/user-manage/UserForm'
 import axios from 'axios'
-import NewsSendBox from '../NewsSendBox'
+// import NewsSendBox from '../NewsSendBox'
 
 export default function UserList() {
   const {confirm} = Modal
@@ -23,21 +23,21 @@ export default function UserList() {
   //获取用户全部信息
   useEffect(()=>{
     axios.get('http://localhost:5000/users?_expand=role').then(res=>{
-      console.log(res.data)
+      // console.log(res.data)
       setdataSource(res.data)
     })
   },[])
   // 获取区域数据
   useEffect(()=>{
     axios.get('http://localhost:5000/regions').then(res=>{
-      console.log(res.data)
+      // console.log(res.data)
       setregionList(res.data)
     })
   },[])
   // 获取角色数据
   useEffect(()=>{
     axios.get('http://localhost:5000/roles').then(res=>{
-        console.log(res.data)
+        // console.log(res.data)
         setroleList(res.data)
     })
   },[])
@@ -179,7 +179,6 @@ export default function UserList() {
   }
 
   return (
-    <NewsSendBox children={
     <div>
       <Button type="primary" onClick={()=>{setisAddVisible(true)}}>添加用户</Button>
       <Table dataSource={dataSource} columns={columns} rowKey={item=>item.id} pagination={{pageSize:5}}></Table>
@@ -228,8 +227,6 @@ export default function UserList() {
         <UserForm regionList={regionList} roleList={roleList} ref={updateForm} isUpdateDisabled={isUpdateDisabled}/>
       </Modal>
     </div>
-    }>
-    </NewsSendBox>
   )
 }
 

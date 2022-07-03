@@ -41,12 +41,8 @@ export default function Home() {
 
   }
   return (
-    <NewsSendBox children={
     <div>
       <Button type="primary" onClick={ajax}>新闻更新</Button>
     </div>
-    }>
-    </NewsSendBox>
-    
   )
 }

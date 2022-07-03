@@ -27,7 +27,7 @@ const {Sider} = Layout;
 
 const iconList={
   // 首页
-  "/home":<HomeOutlined />,
+  "/newssendbox/home":<HomeOutlined />,
   // 用户管理
   "/user-manage":<UserOutlined />,
   "/user-manage/list":<UnorderedListOutlined />,
@@ -57,16 +57,17 @@ export default function SideMenu() {
   const location = useLocation()
   useEffect(()=>{
     axios.get('http://localhost:5000/rights?_embed=children').then(res=>{
-      console.log(res);
+      // console.log(res);
       let list = res.data.filter((item)=>{
         return item.pagepermisson===1
       })
+      console.log(list)
       setMeun(list)
     })
   },[])
   const onclickLink=(key)=>{
-    navigate(key.key)
-    console.log(location.pathname);
+    navigate('/newssendbox'+key.key)
+    console.log(key);
   }
 
   const checkPermission=(menu)=>{
@@ -124,20 +125,21 @@ export default function SideMenu() {
       }
     }
   }
-
+  console.log(location.pathname)
   const renderMenu=()=>{
     addIcon(menu)
     checkPermission(menu)
     return <Menu
-    defaultOpenKeys={['/'+location.pathname.split('/')[1]]}
+    defaultOpenKeys={['/'+location.pathname.split('/')[2]]}
     theme="dark"
     mode="inline"
-    defaultSelectedKeys={location.pathname}
+    defaultSelectedKeys={location.pathname.split('/newssendbox')[1]}
     items={menu}
     style={{icon:<MailOutlined />}}
     onClick={(key)=>{onclickLink(key)}}>
     </Menu>
   }
+  // console.log(location)
   return (
       <Sider trigger={null} collapsible collapsed={false}>
         <div style={{display:'flex',height:'100%',flexDirection:'column'}}>

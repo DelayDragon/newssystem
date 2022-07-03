@@ -1,7 +1,6 @@
 import './NewsSendBox.css'
 import React from 'react'
-import { Outlet, useRoutes } from 'react-router-dom';
-import routes from '../../routes/IndexRouter'
+import { Outlet } from 'react-router-dom';
 import SideMenu from '../../components/sendBox/SideMenu/SideMenu'
 import TopHeader from '../../components/sendBox/TopHeader/TopHeader'
 import { Layout} from 'antd';
@@ -9,7 +8,7 @@ const { Content } = Layout;
 
 
 const NewsSendBox=(props)=>{
-  const element = useRoutes(routes)
+  // const element = useRoutes(routes)
   return (
     <Layout>
       <SideMenu/>

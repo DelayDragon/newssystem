@@ -108,14 +108,10 @@ export default function RightList() {
     }
   }
   return (
-    <NewsSendBox children={
       <div>
-        <Table dataSource={dataSource} columns={columns} 
-        // pagination={{pageSize:6}}
-        />;
+        <Table dataSource={dataSource} columns={columns} pagination={{pageSize:6}}/>;
       </div>
-    }>
-    </NewsSendBox>
+
     // <div>
     //   <Table dataSource={dataSource} columns={columns} 
     //   // pagination={{pageSize:6}}
