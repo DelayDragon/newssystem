@@ -8,12 +8,10 @@ import axios from 'axios';
 export default function Login() {
   const navigate = useNavigate()
   const onFinish = (values) => {
-    // console.log( localStorage.getItem('token'))
     // console.log('Received values of form: ', values);
-    axios.get(`http://localhost:5000/users?username=${values.username}&password=${values.password}&roleState=true`).then(res=>{
-      console.log(res.data)
+    axios.get(`http://localhost:5000/users?_expand=role&username=${values.username}&password=${values.password}&roleState=true`).then(res=>{
       if(res.data.length!==0){
-        localStorage.setItem('token',res.data[0])
+        localStorage.setItem('token',JSON.stringify(res.data[0]))
         navigate('/')
       }else{
         console.log('用户不存在或密码与账号不匹配！');

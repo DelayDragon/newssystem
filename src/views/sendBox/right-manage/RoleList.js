@@ -6,7 +6,6 @@ import {
   DeleteOutlined,
   ExclamationCircleOutlined
 } from '@ant-design/icons';
-import NewsSendBox from '../NewsSendBox';
 
 export default function RoleList() {
   const [dataSource,setdataSource] = useState([])
@@ -125,7 +124,7 @@ export default function RoleList() {
 
   const onCheck = (checkedKeys, info) => {
     console.log('onCheck', checkedKeys, info);
-    setcurrentRights(checkedKeys)
+    setcurrentRights(checkedKeys.checked)
   };
   return (
     <div>

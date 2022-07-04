@@ -55,11 +55,13 @@ export default function SideMenu() {
   const [menu,setMeun] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
+  const {role:{rights}} = JSON.parse(localStorage.getItem('token'))
+  console.log(rights)
   useEffect(()=>{
     axios.get('http://localhost:5000/rights?_embed=children').then(res=>{
       // console.log(res);
       let list = res.data.filter((item)=>{
-        return item.pagepermisson===1
+        return item.pagepermisson===1 && rights.includes(item.key)
       })
       console.log(list)
       setMeun(list)
@@ -77,7 +79,7 @@ export default function SideMenu() {
       }
       else{
         let arr = menu[i].children.filter((item)=>{
-          return item.pagepermisson===1
+          return item.pagepermisson===1 && rights.includes(item.key)
         })
         menu[i].children=arr
       }
@@ -125,7 +127,7 @@ export default function SideMenu() {
       }
     }
   }
-  console.log(location.pathname)
+
   const renderMenu=()=>{
     addIcon(menu)
     checkPermission(menu)

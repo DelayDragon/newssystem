@@ -13,6 +13,8 @@ const { Header} = Layout;
 export default function TopHeader() {
   const [collapsed,setCollapsed] = useState(false)
   const navigate = useNavigate()
+  const {role:{roleName},username} = JSON.parse(localStorage.getItem('token'))
+  console.log(roleName,username)
   const changeCollapsed=()=>{
     setCollapsed(!collapsed)
   }
@@ -24,7 +26,7 @@ export default function TopHeader() {
           key: '1',
           label: (
             <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-              超级管理员
+              {roleName}
             </a>
           ),
         },
@@ -51,7 +53,7 @@ export default function TopHeader() {
             collapsed?<MenuUnfoldOutlined onClick={changeCollapsed}/>:<MenuFoldOutlined onClick={changeCollapsed}/>
           }
           <div style={{float:'right'}}>
-            <span>欢迎admin回来！</span>
+            <span>欢迎{username}您回来！</span>
             <Dropdown overlay={menu}>
               {/* <a onClick={e => e.preventDefault()}> */}
                 <Space>

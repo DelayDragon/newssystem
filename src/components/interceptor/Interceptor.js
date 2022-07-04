@@ -1,10 +1,15 @@
-import {useEffect} from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Interceptor({children}) {
+const Interceptor=()=> {
+    const [loginState,setloginState] = useState
     const navigate = useNavigate()
-    return (
-        localStorage.getItem('token')==='true'?children:navigate('/login')
-    )
+    useEffect(() => {
+        if (localStorage.getItem('token')===null) {
+            setloginState(false)
+        } else {
+            setloginState(true)
+        }
+    }, [])
 }
 export default Interceptor
