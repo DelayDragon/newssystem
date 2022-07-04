@@ -20,13 +20,26 @@ export default function UserList() {
   const [current,setcurrent]=useState([])
   const addForm = useRef(null)
   const updateForm = useRef(null)
-  //获取用户全部信息
+  const {roleId,region,username} = JSON.parse(localStorage.getItem('token'))
+
+  //获取登录用户可用信息
   useEffect(()=>{
+    const roleObj ={
+      "1":'superadmin',
+      "2":'admin',
+      "3":'editor'
+    }
     axios.get('http://localhost:5000/users?_expand=role').then(res=>{
-      // console.log(res.data)
-      setdataSource(res.data)
+      console.log(res.data)
+      // console.log(JSON.parse(localStorage.getItem('token')));
+      const list = res.data
+      console.log(region)
+      setdataSource(roleObj[roleId]==="superadmin"?list:[
+        ...list.filter(item=>item.username===username),
+        ...list.filter(item=>item.region===region && roleObj[item.roleId]==='editor')
+      ])
     })
-  },[])
+  },[roleId,region,username])
   // 获取区域数据
   useEffect(()=>{
     axios.get('http://localhost:5000/regions').then(res=>{
@@ -214,7 +227,7 @@ export default function UserList() {
         })
       }}
     >
-    <UserForm regionList={regionList} roleList={roleList} ref={addForm}/>
+    <UserForm regionList={regionList} roleList={roleList} ref={addForm} isControl={'add'}/>
     </Modal>
       {/* 更新用户弹框 */}
       <Modal 
@@ -224,7 +237,7 @@ export default function UserList() {
       cancelText="取消"
       onOk={()=>{updateFormOK()}} 
       onCancel={()=>{handleCancel()}}>
-        <UserForm regionList={regionList} roleList={roleList} ref={updateForm} isUpdateDisabled={isUpdateDisabled}/>
+        <UserForm regionList={regionList} roleList={roleList} ref={updateForm} isUpdateDisabled={isUpdateDisabled} isControl={'update'}/>
       </Modal>
     </div>
   )

@@ -53,7 +53,7 @@ export default function TopHeader() {
             collapsed?<MenuUnfoldOutlined onClick={changeCollapsed}/>:<MenuFoldOutlined onClick={changeCollapsed}/>
           }
           <div style={{float:'right'}}>
-            <span>欢迎{username}您回来！</span>
+            <span>欢迎<span style={{color:'#1890ff'}}>{username}</span>您回来！</span>
             <Dropdown overlay={menu}>
               {/* <a onClick={e => e.preventDefault()}> */}
                 <Space>
