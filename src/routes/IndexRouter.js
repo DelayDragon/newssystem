@@ -7,6 +7,15 @@ import Home from '../views/sendBox/home/Home'
 import UserList from '../views/sendBox/user-manage/UserList'
 import Nopermission from '../views/sendBox/nopermission/Nopermission'
 import NewsSendBox from '../views/sendBox/NewsSendBox'
+import NewsAdd from '../views/sendBox/news/NewsAdd'
+import NewsDraft from '../views/sendBox/news/NewsDraft'
+import NewsCategory from '../views/sendBox/news/NewsCategory'
+import Audit from '../views/sendBox/audit/Audit'
+import AuditList from '../views/sendBox/audit/AuditList'
+import Unpublished from '../views/sendBox/published/Unpublished'
+import Published from '../views/sendBox/published/Published'
+import Sunset from '../views/sendBox/published/Sunset'
+
 
 const newsRoute = [
   // 登录页面
@@ -49,49 +58,49 @@ const newsRoute = [
       // 新闻管理
       {
         path:"news-manage",
-        element:<UserList/>
+        element:<NewsAdd/>
       },
       {
         path:"news-manage/add",
-        element:<UserList/>
+        element:<NewsAdd/>
       },
       {
         path:"news-manage/draft",
-        element:<UserList/>
+        element:<NewsDraft/>
       },
       {
         path:"news-manage/category",
-        element:<UserList/>
+        element:<NewsCategory/>
       },
       // 审核管理
       {
         path:"audit-manage",
-        element:<Nopermission/>
+        element:<Audit/>
       },
       {
         path:"audit-manage/audit",
-        element:<Nopermission/>
+        element:<Audit/>
       },
       {
         path:"audit-manage/list",
-        element:<Nopermission/>
+        element:<AuditList/>
       },
       // 发布管理
       {
         path:"publish-manage",
-        element:<Nopermission/>
+        element:<Unpublished/>
       },
       {
         path:"publish-manage/unpublished",
-        element:<Nopermission/>
+        element:<Unpublished/>
       },
       {
         path:"publish-manage/published",
-        element:<Nopermission/>
+        element:<Published/>
       },
       {
         path:"publish-manage/sunset",
-        element:<Nopermission/>
+        element:<Sunset/>
       },
 
     ]
