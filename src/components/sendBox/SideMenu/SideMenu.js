@@ -67,7 +67,7 @@ export default function SideMenu() {
   },[])
   const onclickLink=(key)=>{
     navigate('/newssendbox'+key.key)
-    console.log(key);
+    // console.log(key);
   }
 
   const checkPermission=(menu)=>{

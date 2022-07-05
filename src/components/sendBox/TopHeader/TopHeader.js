@@ -14,7 +14,6 @@ export default function TopHeader() {
   const [collapsed,setCollapsed] = useState(false)
   const navigate = useNavigate()
   const {role:{roleName},username} = JSON.parse(localStorage.getItem('token'))
-  console.log(roleName,username)
   const changeCollapsed=()=>{
     setCollapsed(!collapsed)
   }
