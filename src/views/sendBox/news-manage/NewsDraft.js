@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Table,Button,Modal } from 'antd'
+import { useNavigate } from 'react-router-dom'
 import {
   SettingOutlined,
   DeleteOutlined,
@@ -10,6 +11,7 @@ import {
 
 export default function NewsDraft() {
   const {confirm} = Modal
+  const navigate = useNavigate()
   const [dataSource, setdataSource] = useState([])
   const { username } = JSON.parse(localStorage.getItem('token'))
   useEffect(() => {
@@ -71,7 +73,7 @@ export default function NewsDraft() {
       dataIndex: '',
       render: (item) => {
         return <div>
-          <Button type="primary" shape="circle" icon={<SettingOutlined />}  />
+          <Button type="primary" shape="circle" icon={<SettingOutlined />}  onClick={()=>{navigate(`/newssendbox/news-manage/update/${item.id}`)}}/>
           <Button danger shape="circle" icon={<DeleteOutlined />}  onClick={()=>{confirmDelete(item)}}/>
           <Button type='primary' shape="circle" icon={<UploadOutlined />} />
         </div>

@@ -16,6 +16,7 @@ import Unpublished from '../views/sendBox/published-manage/Unpublished'
 import Published from '../views/sendBox/published-manage/Published'
 import Sunset from '../views/sendBox/published-manage/Sunset'
 import NewsPreview from '../views/sendBox/news-manage/NewsPreview'
+import NewsUpdate from '../views/sendBox/news-manage/NewsUpdate'
 
 
 const newsRoute = [
@@ -75,7 +76,7 @@ const newsRoute = [
       },
       {
         path:"news-manage/update/:id",
-        element:<NewsCategory/>
+        element:<NewsUpdate/>
       },
       
       {
