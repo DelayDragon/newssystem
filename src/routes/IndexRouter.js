@@ -15,6 +15,7 @@ import AuditList from '../views/sendBox/audit-manage/AuditList'
 import Unpublished from '../views/sendBox/published-manage/Unpublished'
 import Published from '../views/sendBox/published-manage/Published'
 import Sunset from '../views/sendBox/published-manage/Sunset'
+import NewsPreview from '../views/sendBox/news-manage/NewsPreview'
 
 
 const newsRoute = [
@@ -71,6 +72,15 @@ const newsRoute = [
       {
         path:"news-manage/category",
         element:<NewsCategory/>
+      },
+      {
+        path:"news-manage/update/:id",
+        element:<NewsCategory/>
+      },
+      
+      {
+        path:"news-manage/preview/:id",
+        element:<NewsPreview/>
       },
       // 审核管理
       {

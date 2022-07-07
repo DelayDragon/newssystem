@@ -5,7 +5,7 @@ const UserForm = forwardRef((props, ref) => {
   const [form] = Form.useForm();
   const { Option } = Select;
   const [isDisabled, setisDisabled] = useState(false)
-  const { roleId, region,role:{roleName} } = JSON.parse(localStorage.getItem('token'))
+  const { roleId, region } = JSON.parse(localStorage.getItem('token'))
   const roleObj = {
     "1": 'superadmin',
     "2": 'admin',

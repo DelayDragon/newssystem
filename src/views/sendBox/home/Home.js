@@ -1,7 +1,5 @@
 import { Button } from 'antd'
-import axios from 'axios'
 import React from 'react'
-import NewsSendBox from '../NewsSendBox'
 
 export default function Home() {
   const ajax=()=>{

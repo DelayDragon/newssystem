@@ -65,7 +65,7 @@ export default function NewsAdd() {
       "roleId": User.roleId,
       "auditState": auditState,
       "publishState": 0,
-      "createTime": Date.now,
+      "createTime": Date.now(),
       "star": 0,
       "view": 0,
       // "publishTime": 0
@@ -141,7 +141,6 @@ export default function NewsAdd() {
           }}></NewsEditor>
         </div>
         <div className={current === 2 ? '' : style.active}>
-          33333
         </div>
       </div>
       <div style={{ marginTop: '50px' }}>

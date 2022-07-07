@@ -6,7 +6,6 @@ import {
 } from '@ant-design/icons';
 import axios from 'axios';
 import React,{useState , useEffect} from 'react'
-import NewsSendBox from '../NewsSendBox'
 
 
 const { confirm } = Modal;
@@ -109,7 +108,7 @@ export default function RightList() {
   }
   return (
       <div>
-        <Table dataSource={dataSource} columns={columns} pagination={{pageSize:6}}/>;
+        <Table dataSource={dataSource} columns={columns} pagination={{pageSize:6}}/>
       </div>
 
     // <div>
