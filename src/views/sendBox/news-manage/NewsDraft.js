@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Table,Button,Modal } from 'antd'
+import { Table,Button,Modal,notification } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import {
   SettingOutlined,
@@ -41,6 +41,19 @@ export default function NewsDraft() {
       },
     });
   }
+  const handleCheck=(id)=>{
+    axios.patch(`http://localhost:5000/news/${id}`,{
+      auditState:1
+    }).then(res=>{
+      navigate('/newssendbox/audit-manage/list')
+      notification.info({
+        message: `通知`,
+        description:
+            `你可以在'审核列表'中查看你的新闻`,
+        placement: 'bottomRight',
+    });
+    })
+  }
   const columns = [
     {
       title: 'ID',
@@ -75,7 +88,7 @@ export default function NewsDraft() {
         return <div>
           <Button type="primary" shape="circle" icon={<SettingOutlined />}  onClick={()=>{navigate(`/newssendbox/news-manage/update/${item.id}`)}}/>
           <Button danger shape="circle" icon={<DeleteOutlined />}  onClick={()=>{confirmDelete(item)}}/>
-          <Button type='primary' shape="circle" icon={<UploadOutlined />} />
+          <Button type='primary' shape="circle" icon={<UploadOutlined />} onClick={()=>{handleCheck(item.id)}}/>
         </div>
       }
     },
