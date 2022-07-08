@@ -24,9 +24,9 @@ export default function Audit() {
   const columns = [
     {
       title: '新闻标题',
-      dataIndex: 'title'||'label',
-      render: (title, item) => {
-        return <a href={`/newssendbox/news-manage/preview/${item.id}`}>{title}</a>
+      dataIndex: 'label',
+      render: (label, item) => {
+        return <a href={`/newssendbox/news-manage/preview/${item.id}`}>{label}</a>
       }
     },
     {

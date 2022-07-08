@@ -19,9 +19,9 @@ export default function NewsUpdate() {
     useEffect(() => {
         axios.get(`http://localhost:5000/news/${match.params.id}?_expand=category&_expand=role`).then(res => {
             console.log(res.data)
-            let { title, categoryId, content } = res.data
+            let { label, categoryId, content } = res.data
             NewsForm.current.setFieldsValue({
-                title,
+                label,
                 categoryId
             })
             console.log(content)
@@ -111,7 +111,7 @@ export default function NewsUpdate() {
                     >
                         <Form.Item
                             label="新闻标题"
-                            name="title"
+                            name="label"
                             rules={[
                                 {
                                     required: true,

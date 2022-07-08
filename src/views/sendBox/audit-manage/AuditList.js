@@ -18,9 +18,9 @@ export default function AuditList() {
   const columns = [
     {
       title: '新闻标题',
-      dataIndex: 'title',
-      render: (title, item) => {
-        return <a href={`/newssendbox/news-manage/preview/${item.id}`}>{title}</a>
+      dataIndex: 'label',
+      render: (label, item) => {
+        return <a href={`/newssendbox/news-manage/preview/${item.id}`}>{label}</a>
       }
     },
     {
@@ -82,7 +82,8 @@ export default function AuditList() {
   const handlePublish=(item)=>{
     setdataSource(dataSource.filter(data=>data.id!==item.id))
     axios.patch(`http://localhost:5000/news/${item.id}`,{
-      publishState:2
+      publishState:2,
+      publishTime:Date.now()
     }).then(res=>{
       notification.info({
         message: `通知`,

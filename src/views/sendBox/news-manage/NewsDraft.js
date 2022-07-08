@@ -64,7 +64,7 @@ export default function NewsDraft() {
     },
     {
       title: '新闻标题',
-      dataIndex: 'title',
+      dataIndex: 'label',
       render:(title,item)=>{
         return <a href={`/newssendbox/news-manage/preview/${item.id}`}>{title}</a>
       }
