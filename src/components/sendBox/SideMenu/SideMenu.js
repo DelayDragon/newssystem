@@ -3,6 +3,7 @@ import './SideMenu.css'
 import { Layout, Menu } from 'antd';
 import React,{useEffect, useState} from 'react'
 import {useNavigate,useLocation} from 'react-router-dom'
+import { useSelector } from 'react-redux';
 import {
   ContainerOutlined,
   CaretDownOutlined,
@@ -55,6 +56,7 @@ export default function SideMenu() {
   const [menu,setMeun] = useState([])
   const navigate = useNavigate()
   const location = useLocation()
+  const {collapsed} = useSelector(state=>state.collapsedS) 
   const {role:{rights}} = JSON.parse(localStorage.getItem('token'))
   useEffect(()=>{
     axios.get('http://localhost:5000/rights?_embed=children').then(res=>{
@@ -142,7 +144,7 @@ export default function SideMenu() {
   }
   // console.log(location)
   return (
-      <Sider trigger={null} collapsible collapsed={false}>
+      <Sider trigger={null} collapsible collapsed={collapsed}>
         <div style={{display:'flex',height:'100%',flexDirection:'column'}}>
           <div className="logo" >全球新闻发布管理系统</div>
           <div style={{flex:1,"overflow":'auto'}}>

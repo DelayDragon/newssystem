@@ -1,18 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const collapsedState = createSlice({
-    name:'collapseder',
-    initialState:{
-        collapsed:false
+    name: 'collapsedS',
+    initialState: {
+        collapsed: false
     },
-    reduers:{
-        changeCollapsed(state,action){
-            console.log(state,action);
+    reducers: {
+        changeCollapsed: (state, action) => {
+            console.log(state, action);
             state.collapsed = !state.collapsed
         }
     }
 })
 
-export const  {changeCollapsed} = collapsedState.actions
+export const { changeCollapsed } = collapsedState.actions
+console.log(collapsedState);
 
 export default collapsedState.reducer

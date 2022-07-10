@@ -1,5 +1,5 @@
 import { Layout,Avatar  } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { DownOutlined,UserOutlined  } from '@ant-design/icons';
 import { Dropdown, Menu, Space } from 'antd';
@@ -13,8 +13,9 @@ const { Header} = Layout;
 
 
 export default function TopHeader() {
+  console.log(changeCollapsed);
   const dispatch = useDispatch()
-  const {collapsed} = useSelector(state=>state.collapsedState)
+  const {collapsed} = useSelector(state=>state.collapsedS) 
   // const [collapsed,setCollapsed] = useState(false)
   const navigate = useNavigate()
   const {role:{roleName},username} = JSON.parse(localStorage.getItem('token'))
@@ -53,7 +54,7 @@ export default function TopHeader() {
           })} */}
           {
             // collapsed?<MenuUnfoldOutlined/>:<MenuFoldOutlined/>
-            collapsed?<MenuUnfoldOutlined onClick={()=>dispatch(changeCollapsed())}/>:<MenuFoldOutlined onClick={()=>dispatch(changeCollapsed())}/>
+            collapsed?<MenuUnfoldOutlined onClick={()=>{dispatch(changeCollapsed())}}/>:<MenuFoldOutlined onClick={()=>{dispatch(changeCollapsed())}}/>
           }
           <div style={{float:'right'}}>
             <span>欢迎<span style={{color:'#1890ff'}}>{username}</span>您回来！</span>
