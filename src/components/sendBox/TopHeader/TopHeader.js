@@ -13,7 +13,6 @@ const { Header} = Layout;
 
 
 export default function TopHeader() {
-  console.log(changeCollapsed);
   const dispatch = useDispatch()
   const {collapsed} = useSelector(state=>state.collapsedS) 
   // const [collapsed,setCollapsed] = useState(false)
@@ -53,7 +52,6 @@ export default function TopHeader() {
             onClick: () => setCollapsed(!collapsed),
           })} */}
           {
-            // collapsed?<MenuUnfoldOutlined/>:<MenuFoldOutlined/>
             collapsed?<MenuUnfoldOutlined onClick={()=>{dispatch(changeCollapsed())}}/>:<MenuFoldOutlined onClick={()=>{dispatch(changeCollapsed())}}/>
           }
           <div style={{float:'right'}}>

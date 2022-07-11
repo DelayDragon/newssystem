@@ -6,7 +6,8 @@ import {
   ExclamationCircleOutlined
 } from '@ant-design/icons'
 import UserForm from '../../../components/user-manage/UserForm'
-import axios from 'axios'
+// import axios from 'axios'
+import axios from '../../../util/http'
 // import NewsSendBox from '../NewsSendBox'
 
 export default function UserList() {
@@ -29,11 +30,10 @@ export default function UserList() {
       "2":'admin',
       "3":'editor'
     }
-    axios.get('http://localhost:5000/users?_expand=role').then(res=>{
+    axios.get('/users?_expand=role').then(res=>{
       console.log(res.data)
       // console.log(JSON.parse(localStorage.getItem('token')));
       const list = res.data
-      console.log(region)
       setdataSource(roleObj[roleId]==="superadmin"?list:[
         ...list.filter(item=>item.username===username),
         ...list.filter(item=>item.region===region && roleObj[item.roleId]==='editor')
