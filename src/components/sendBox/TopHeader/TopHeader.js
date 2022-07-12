@@ -1,4 +1,4 @@
-import { Layout,Avatar  } from 'antd';
+import { Layout,Avatar, Button  } from 'antd';
 import React from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { DownOutlined,UserOutlined  } from '@ant-design/icons';
@@ -55,6 +55,7 @@ export default function TopHeader() {
             collapsed?<MenuUnfoldOutlined onClick={()=>{dispatch(changeCollapsed())}}/>:<MenuFoldOutlined onClick={()=>{dispatch(changeCollapsed())}}/>
           }
           <div style={{float:'right'}}>
+            <Button type='primary' style={{float:'left',lineHeight:'64px'}}>游客模式</Button>
             <span>欢迎<span style={{color:'#1890ff'}}>{username}</span>您回来！</span>
             <Dropdown overlay={menu}>
               {/* <a onClick={e => e.preventDefault()}> */}

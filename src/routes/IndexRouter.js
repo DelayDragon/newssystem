@@ -17,9 +17,20 @@ import Published from '../views/sendBox/published-manage/Published'
 import Sunset from '../views/sendBox/published-manage/Sunset'
 import NewsPreview from '../views/sendBox/news-manage/NewsPreview'
 import NewsUpdate from '../views/sendBox/news-manage/NewsUpdate'
+import News from '../views/news/News'
+import Detail from '../views/news/Detail'
 
 
 const newsRoute = [
+  // 游客浏览页面
+  { 
+    path:'/news',
+    element:<News/>
+  },
+  { 
+    path:'/detail/:id',
+    element:<Detail/>
+  },
   // 登录页面
   {
     path:'/login',
