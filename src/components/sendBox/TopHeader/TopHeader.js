@@ -21,7 +21,9 @@ export default function TopHeader() {
   // const changeCollapsed=()=>{
     // setCollapsed(!collapsed)
   // }
-
+  const handleEnterTourist=()=>{
+    navigate('/news')
+  }
   const menu = (
     <Menu
       items={[
@@ -54,8 +56,8 @@ export default function TopHeader() {
           {
             collapsed?<MenuUnfoldOutlined onClick={()=>{dispatch(changeCollapsed())}}/>:<MenuFoldOutlined onClick={()=>{dispatch(changeCollapsed())}}/>
           }
+          <Button type='primary' style={{float:'left',position:'fixed',top:'16px',left:'320px'}} onClick={()=>{handleEnterTourist()}}>游客模式</Button>
           <div style={{float:'right'}}>
-            <Button type='primary' style={{float:'left',lineHeight:'64px'}}>游客模式</Button>
             <span>欢迎<span style={{color:'#1890ff'}}>{username}</span>您回来！</span>
             <Dropdown overlay={menu}>
               {/* <a onClick={e => e.preventDefault()}> */}
