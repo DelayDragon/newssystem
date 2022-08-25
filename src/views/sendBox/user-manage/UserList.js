@@ -210,6 +210,7 @@ export default function UserList() {
         addForm.current.validateFields().then(value=>{
           addForm.current.resetFields()
           setisAddVisible(false)
+          console.log(value);
           //post到后端，生成id，在设置dataSource,方面后边的删除和更新
           axios.post(`http://localhost:5000/users`,{
             ...value,

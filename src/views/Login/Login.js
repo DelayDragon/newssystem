@@ -12,7 +12,7 @@ export default function Login() {
     axios.get(`http://localhost:5000/users?_expand=role&username=${values.username}&password=${values.password}&roleState=true`).then(res=>{
       if(res.data.length!==0){
         localStorage.setItem('token',JSON.stringify(res.data[0]))
-        navigate('/')
+        navigate('/newssendbox/home')
       }else{
         console.log('用户不存在或密码与账号不匹配！');
         message.error('用户不存在或密码与账号不匹配！')

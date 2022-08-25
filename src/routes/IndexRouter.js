@@ -26,6 +26,7 @@ const newsRoute = [
   { 
     path:'/news',
     element:<News/>
+    // component:()=>import('../views/news/News')
   },
   { 
     path:'/detail/:id',
@@ -40,11 +41,17 @@ const newsRoute = [
   {
     path:'/newssendbox',
     element:<NewsSendBox/>,
+    // component:()=>import('../views/sendBox/NewsSendBox'),
     children:[
       // 首页
       {
         path:'home',
-        element:<Home/>
+        element:<Home/>,
+        // component:()=>import('../views/sendBox/home/Home'),
+        // meta: {
+        //   title: '首页',
+        //   needLogin: true,
+        // },
       },
       // 用户管理
       {
@@ -135,7 +142,9 @@ const newsRoute = [
   // 重定向
   {
     path:'/',
-    element:<Navigate to = '/newssendbox/home'/>
+    element:<Navigate to = '/login'/>
+    // component:()=>import('../views/sendBox/home/Home'),
+    // component:()=>import('../views/news/News')
   }
 ]
 export default newsRoute
