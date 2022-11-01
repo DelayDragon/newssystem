@@ -125,19 +125,37 @@ export default function UserList() {
   }
   //点击更新用户信息
   const handleUpdate=(item)=>{
-    setisModalVisible(true) //展示
-    setTimeout(() => { //根据点击item的id改变选择框的可选是否
-      if(item.roleId===1){
+    //Promise实现
+    new Promise((resolve, reject) => {
+      setisModalVisible(true)
+      resolve(item)
+    })
+    .then((res) => {
+      if(res.roleId === 1){
         setisUpdateDisabled(true)
       }else{
         setisUpdateDisabled(false)
       }
-    }, 0);
-    setTimeout(() => { //填充数据
-      console.log(updateForm.current)
+    }, err => {throw new Error(err)})
+    .then(res => {
       updateForm.current.setFieldsValue(item)
-    }, 0);
-    setcurrent(item)
+    }, err => {throw new Error(err)})
+    .finally(setcurrent(item))
+
+
+    // setisModalVisible(true) //展示
+    // setTimeout(() => { //根据点击item的id改变选择框的可选是否
+    //   if(item.roleId===1){
+    //     setisUpdateDisabled(true)
+    //   }else{
+    //     setisUpdateDisabled(false)
+    //   }
+    // }, 0);
+    // setTimeout(() => { //填充数据
+    //   console.log(updateForm.current)
+    //   updateForm.current.setFieldsValue(item)
+    // }, 0);
+    // setcurrent(item)
   }
   //删除
   const deleleMethod=(item)=>{ 
@@ -194,7 +212,7 @@ export default function UserList() {
   return (
     <div>
       <Button type="primary" onClick={()=>{setisAddVisible(true)}}>添加用户</Button>
-      <Table dataSource={dataSource} columns={columns} rowKey={item=>item.id} pagination={{pageSize:5}}></Table>
+      <Table dataSource={dataSource} columns={columns} rowKey={item=>item.id} pagination={{pageSize:7}}></Table>
       {/* 添加用户弹框 */}
       <Modal
       forceRender
@@ -206,7 +224,6 @@ export default function UserList() {
         setisAddVisible(false)
       }}
       onOk={() => {
-        // console.log(addForm)
         addForm.current.validateFields().then(value=>{
           addForm.current.resetFields()
           setisAddVisible(false)
